@@ -4,15 +4,21 @@ from pathlib import Path
 import subprocess
 import fire
 
+blacklist = [".srt"]
+
 
 def upload_file(
     url,
     path,
     proxy="http://127.0.0.1:7890",
     cache="already_upload.txt",
+    blacklist=blacklist,
 ):
     if not Path(path).is_file():
         print("本地文件不存在", path)
+        return
+    if Path(path).suffix in blacklist:
+        print("黑名单,跳过", path)
         return
     if Path(cache).is_file():
         with open(cache, "r", encoding="utf8") as f:
@@ -26,13 +32,19 @@ def upload_file(
         f.write(f"{path}\n")
 
 
-def upload_dir(url, dir, proxy="http://127.0.0.1:7890", cache="already_upload.txt"):
+def upload_dir(
+    url,
+    dir,
+    proxy="http://127.0.0.1:7890",
+    cache="already_upload.txt",
+    blacklist=blacklist,
+):
     if not Path(dir).is_dir():
         print("空目录:", dir)
         return
     for path in Path(dir).glob("*"):
         if path.is_file():
-            upload_file(url, path.as_posix(), proxy, cache)
+            upload_file(url, path.as_posix(), proxy, cache, blacklist)
 
 
 if __name__ == "__main__":
