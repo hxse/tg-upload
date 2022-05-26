@@ -7,8 +7,8 @@ import fire
 import json
 
 blacklist = [".srt"]
-retryMax = 15
-sleep = 2
+retryMax = 10
+sleep = 3
 
 
 def convert_json(data):
@@ -54,6 +54,7 @@ def upload_file(
     proxy="http://127.0.0.1:7890",
     cache="already_upload.txt",
     blacklist=blacklist,
+    sleep=sleep,
 ):
     if not Path(path).is_file():
         print("本地文件不存在", path)
@@ -68,7 +69,7 @@ def upload_file(
             print("已存在,跳过:", path)
             return True
 
-    loop_run_ffmepg(url, path, proxy)
+    loop_run_ffmepg(url, path, proxy, sleep=sleep)
 
     with open(cache, "a+", encoding="utf8") as f:
         f.write(f"{path}\n")
@@ -88,7 +89,9 @@ def upload_dir(
         return
     for path in Path(dir).glob("*"):
         if path.is_file():
-            isSkip = upload_file(url, path.as_posix(), proxy, cache, blacklist)
+            isSkip = upload_file(
+                url, path.as_posix(), proxy, cache, blacklist, sleep=sleep
+            )
             if not isSkip:
                 print("sleep", sleep)
                 time.sleep(sleep)
