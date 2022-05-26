@@ -4,8 +4,48 @@ from pathlib import Path
 import time
 import subprocess
 import fire
+import json
 
 blacklist = [".srt"]
+retryMax = 15
+sleep = 2
+
+
+def convert_json(data):
+    # outData = data.encode().decode(
+    #     # "unicode-escape"
+    # )  # or string-escape https://stackoverflow.com/questions/2969044/python-string-escape-vs-unicode-escape
+    outJson = json.loads(data)
+    return outJson
+
+
+def run_ffmpeg(url, path, proxy):
+    command = f'telegram-upload -p {proxy} --to {url} "{path}"'
+    commandArr = ["telegram-upload", "-p", proxy, "--to", url, f'"{path}"']
+
+    pop = subprocess.Popen(
+        command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
+    )
+    for line in pop.stdout:
+        if line[:9] == b"Uploading":
+            return True
+        l = line.decode("utf-8")
+        if l.strip() == "Task was destroyed but it is pending!":
+            return False
+
+
+def loop_run_ffmepg(url, path, proxy, retry=0, sleep=sleep):
+    assert retry <= retryMax, f"超过最大次数{retryMax}"
+    res = run_ffmpeg(url, path, proxy)
+
+    if not res:
+        retry += 1
+        print("上传错误", path, "Task was destroyed but it is pending!")
+        print("重试次数:", retry, "最大次数:", retryMax)
+        print("sleep", sleep)
+        time.sleep(sleep)
+        return loop_run_ffmepg(url, path, proxy, retry)
+    print("上传成功", retry, path)
 
 
 def upload_file(
@@ -27,8 +67,9 @@ def upload_file(
         if path + "\n" in data:
             print("已存在,跳过:", path)
             return True
-    command = f'telegram-upload -p {proxy} --to {url} "{path}"'
-    subprocess.run(command)
+
+    loop_run_ffmepg(url, path, proxy)
+
     with open(cache, "a+", encoding="utf8") as f:
         f.write(f"{path}\n")
     return
@@ -40,7 +81,7 @@ def upload_dir(
     proxy="http://127.0.0.1:7890",
     cache="already_upload.txt",
     blacklist=blacklist,
-    sleep=2,
+    sleep=sleep,
 ):
     if not Path(dir).is_dir():
         print("空目录:", dir)
