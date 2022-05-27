@@ -47,9 +47,7 @@ def run_ffmpeg(url, path, proxy):
         message = b"Task was destroyed but it is pending!"
         if line.strip() == message:
             return [False, message]
-    import pdb
 
-    pdb.set_trace()
     return [False, "原因未知"]
 
 
