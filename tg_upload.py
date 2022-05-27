@@ -45,9 +45,6 @@ def run_ffmpeg(url, path, proxy):
     print("输出结果")
     for line in pop.stdout:
         print(line)
-    import pdb
-
-    pdb.set_trace()
 
 
 def loop_run_ffmepg(url, path, proxy, retry=0, sleep=sleep):
@@ -96,10 +93,13 @@ def upload_dir(
     url,
     dir,
     proxy="http://127.0.0.1:7890",
-    cache="already_upload.txt",
+    cache=None,
     blacklist=blacklist,
     sleep=sleep,
 ):
+    if cache == None:
+        cache = url.split("/")[-1] if url.startswith("http") else url
+        cache += ".txt"
     if not Path(dir).is_dir():
         print("空目录:", dir)
         return
