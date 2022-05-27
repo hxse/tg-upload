@@ -8,7 +8,7 @@ import json
 
 blacklist = [".srt"]
 retryMax = 10
-sleep = 3
+sleep = 8
 
 
 def convert_json(data):
@@ -26,25 +26,41 @@ def run_ffmpeg(url, path, proxy):
     pop = subprocess.Popen(
         command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT
     )
+
+    while pop.poll() == None:
+        line = pop.stdout.readline()
+        # print(line)
+        message = b"Uploading"
+        if line[:9].strip() == message:
+            return [True, message]
+
+        message = b"UnicodeEncodeError: 'gbk' codec can't encode character '\\xa0' in position 37: illegal multibyte sequence"
+        if line.strip() == message:
+            return [False, message]
+
+        message = b"Task was destroyed but it is pending!"
+        if line.strip() == message:
+            return [False, message]
+
+    print("输出结果")
     for line in pop.stdout:
-        if line[:9] == b"Uploading":
-            return True
-        l = line.decode("utf-8")
-        if l.strip() == "Task was destroyed but it is pending!":
-            return False
+        print(line)
+    import pdb
+
+    pdb.set_trace()
 
 
 def loop_run_ffmepg(url, path, proxy, retry=0, sleep=sleep):
     assert retry <= retryMax, f"超过最大次数{retryMax}"
-    res = run_ffmpeg(url, path, proxy)
+    [state, message] = run_ffmpeg(url, path, proxy)
 
-    if not res:
+    if not state:
         retry += 1
-        print("上传错误", path, "Task was destroyed but it is pending!")
+        print("上传错误", path, message)
         print("重试次数:", retry, "最大次数:", retryMax)
         print("sleep", sleep)
         time.sleep(sleep)
-        return loop_run_ffmepg(url, path, proxy, retry)
+        return loop_run_ffmepg(url, path, proxy, retry, sleep=sleep)
     print("上传成功", retry, path)
 
 
