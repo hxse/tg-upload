@@ -29,7 +29,7 @@ def run_ffmpeg(url, path, proxy):
 
     while pop.poll() == None:
         line = pop.stdout.readline()
-        # print(line)
+        print("输出过程:", line)
         message = b"Uploading"
         if line[:9].strip() == message:
             return [True, message]
@@ -42,9 +42,15 @@ def run_ffmpeg(url, path, proxy):
         if line.strip() == message:
             return [False, message]
 
-    print("输出结果")
     for line in pop.stdout:
-        print(line)
+        print("输出结果", line)
+        message = b"Task was destroyed but it is pending!"
+        if line.strip() == message:
+            return [False, message]
+    import pdb
+
+    pdb.set_trace()
+    return [False, "原因未知"]
 
 
 def loop_run_ffmepg(url, path, proxy, retry=0, sleep=sleep):
@@ -97,6 +103,9 @@ def upload_dir(
     blacklist=blacklist,
     sleep=sleep,
 ):
+    """
+    sleep,tg只支持一个接一个上传,如果上传太快就会出现报错 'Task was destroyed but it is pending!',所以需要设置一个恰当的sleep时间来控制轮询速度
+    """
     if cache == None:
         cache = url.split("/")[-1] if url.startswith("http") else url
         cache += ".txt"
