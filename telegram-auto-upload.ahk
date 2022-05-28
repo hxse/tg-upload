@@ -17,8 +17,8 @@ SetBatchLines -1
 
 F3::
 Macro1:
-InputBox, skipCopyFullName, skipCopyFullName, , , , , , , , , 1
 InputBox, skipCopyName, skipCopyName, , , , , , , , , 0
+InputBox, skipCopyFullName, skipCopyFullName, , , , , , , , , 1
 InputBox, loopNum, loopNum, , , , , , , , , 0
 If (%loopNum%=0)
 {

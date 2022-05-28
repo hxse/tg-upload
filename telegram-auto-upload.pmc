@@ -2,95 +2,95 @@
 [PMC Code v5.4.1]|F3||1|Window,2,Fast,0,1,Input,-1,-1,1|1|Macro1
 Context=None|
 Groups=开始:1
-1|InputBox|skipCopyFullName, skipCopyFullName, , , , , , , , , 1|1|0|InputBox||||||
-2|InputBox|skipCopyName, skipCopyName, , , , , , , , , 0|1|0|InputBox|||||1|
-3|InputBox|loopNum, loopNum, , , , , , , , , 0|1|0|InputBox|||||2|
-4|Evaluate Expression|%loopNum%=0|1|0|If_Statement||||||
-5|Return||1|0|Return||||||
-6|[End If]|EndIf|1|0|If_Statement||||||
-7|[Pause]||1|5000|Sleep|||||3|
-8|[LoopStart]|LoopStart|%loopNum%|0|Loop|||||4|
-9|Evaluate Expression|1=1|1|0|If_Statement|||||6|
-10|LControl Down|{LControl Down}|1|0|Send|||||8|
-11|[Pause]||1|200|Sleep|||||9|
-12|c|{c}|1|0|Send|||||10|
-13|[Pause]||1|200|Sleep|||||11|
-14|LControl Up|{LControl Up}|1|0|Send|||||12|
-15|[End If]|EndIf|1|0|If_Statement|||||13|
-16|[Pause]||1|1000|Sleep|||||14|
-17|Evaluate Expression|1=1|1|0|If_Statement|||||15|
-18|LAlt Down|{LAlt Down}|1|0|Send|||||17|
-19|[Pause]||1|200|Sleep|||||18|
-20|Tab|{Tab}|1|0|Send|||||19|
-21|[Pause]||1|200|Sleep|||||20|
-22|LAlt Up|{LAlt Up}|1|0|Send|||||21|
-23|[End If]|EndIf|1|0|If_Statement|||||22|
-24|[Pause]||1|2000|Sleep|||||23|
-25|Evaluate Expression|1=1|1|0|If_Statement|||||24|
-26|LControl Down|{LControl Down}|1|0|Send|||||26|
-27|[Pause]||1|200|Sleep|||||27|
-28|v|{v}|1|0|Send|||||28|
-29|[Pause]||1|200|Sleep|||||29|
-30|LControl Up|{LControl Up}|1|0|Send|||||30|
-31|[End If]|EndIf|1|0|If_Statement|||||31|
-32|[Pause]||1|1000|Sleep|||||32|
-33|Evaluate Expression|0=%skipCopyName%|1|0|If_Statement|||||33|
-34|Evaluate Expression|1=1|1|0|If_Statement|||||35|
-35|LAlt Down|{LAlt Down}|1|0|Send|||||37|
-36|[Pause]||1|200|Sleep|||||38|
-37|Tab|{Tab}|1|0|Send|||||39|
-38|[Pause]||1|200|Sleep|||||40|
-39|LAlt Up|{LAlt Up}|1|0|Send|||||41|
-40|[End If]|EndIf|1|0|If_Statement|||||42|
-41|[Pause]||1|2000|Sleep|||||43|
-42|Evaluate Expression|1=1|1|0|If_Statement|||||44|
-43|F2|{F2}|1|0|Send|||||46|
-44|[End If]|EndIf|1|0|If_Statement|||||47|
-45|[Pause]||1|1000|Sleep|||||48|
-46|Evaluate Expression|1=1|1|0|If_Statement|||||49|
-47|LControl Down|{LControl Down}|1|0|Send|||||51|
-48|[Pause]||1|200|Sleep|||||52|
-49|Evaluate Expression|0=%skipCopyFullName%|1|0|If_Statement|||||53|
-50|a|{a}|1|0|Send|||||55|
-51|[End If]|EndIf|1|0|If_Statement|||||56|
-52|[Pause]||1|1000|Sleep|||||57|
-53|c|{c}|1|0|Send|||||58|
-54|[Pause]||1|200|Sleep|||||59|
-55|LControl Up|{LControl Up}|1|0|Send|||||60|
-56|[End If]|EndIf|1|0|If_Statement|||||61|
-57|[Pause]||1|1000|Sleep|||||62|
-58|Evaluate Expression|1=1|1|0|If_Statement|||||63|
-59|LAlt Down|{LAlt Down}|1|0|Send|||||65|
-60|[Pause]||1|200|Sleep|||||66|
-61|Tab|{Tab}|1|0|Send|||||67|
-62|[Pause]||1|200|Sleep|||||68|
-63|LAlt Up|{LAlt Up}|1|0|Send|||||69|
-64|[End If]|EndIf|1|0|If_Statement|||||70|
-65|[Pause]||1|2000|Sleep|||||71|
-66|Evaluate Expression|1=1|1|0|If_Statement|||||72|
-67|LControl Down|{LControl Down}|1|0|Send|||||74|
-68|[Pause]||1|200|Sleep|||||75|
-69|v|{v}|1|0|Send|||||76|
-70|[Pause]||1|200|Sleep|||||77|
-71|LControl Up|{LControl Up}|1|0|Send|||||78|
-72|[End If]|EndIf|1|0|If_Statement|||||79|
-73|[Pause]||1|1000|Sleep|||||80|
-74|[End If]|EndIf|1|0|If_Statement|||||81|
-75|Evaluate Expression|1=1|1|0|If_Statement|||||82|
-76|Enter|{Enter}|1|0|Send|||||84|
-77|[End If]|EndIf|1|0|If_Statement|||||85|
-78|[Pause]||1|1000|Sleep|||||86|
-79|Evaluate Expression|1=1|1|0|If_Statement|||||87|
-80|LAlt Down|{LAlt Down}|1|0|Send|||||89|
-81|[Pause]||1|200|Sleep|||||90|
-82|Tab|{Tab}|1|0|Send|||||91|
-83|[Pause]||1|200|Sleep|||||92|
-84|LAlt Up|{LAlt Up}|1|0|Send|||||93|
-85|[End If]|EndIf|1|0|If_Statement|||||94|
-86|[Pause]||1|2000|Sleep|||||95|
-87|Evaluate Expression|1=1|1|0|If_Statement|||||96|
-88|Down|{Down}|1|0|Send|||||98|
-89|[End If]|EndIf|1|0|If_Statement|||||99|
-90|[Pause]||1|1000|Sleep|||||100|
-91|[LoopEnd]|LoopEnd|1|0|Loop|||||101|
+1|InputBox|skipCopyName, skipCopyName, , , , , , , , , 0|1|0|InputBox|||||2|
+2|InputBox|skipCopyFullName, skipCopyFullName, , , , , , , , , 1|1|0|InputBox|||||1|
+3|InputBox|loopNum, loopNum, , , , , , , , , 0|1|0|InputBox|||||3|
+4|Evaluate Expression|%loopNum%=0|1|0|If_Statement|||||4|
+5|Return||1|0|Return|||||6|
+6|[End If]|EndIf|1|0|If_Statement|||||7|
+7|[Pause]||1|5000|Sleep|||||8|
+8|[LoopStart]|LoopStart|%loopNum%|0|Loop|||||9|
+9|Evaluate Expression|1=1|1|0|If_Statement|||||11|
+10|LControl Down|{LControl Down}|1|0|Send|||||13|
+11|[Pause]||1|200|Sleep|||||14|
+12|c|{c}|1|0|Send|||||15|
+13|[Pause]||1|200|Sleep|||||16|
+14|LControl Up|{LControl Up}|1|0|Send|||||17|
+15|[End If]|EndIf|1|0|If_Statement|||||18|
+16|[Pause]||1|1000|Sleep|||||19|
+17|Evaluate Expression|1=1|1|0|If_Statement|||||20|
+18|LAlt Down|{LAlt Down}|1|0|Send|||||22|
+19|[Pause]||1|200|Sleep|||||23|
+20|Tab|{Tab}|1|0|Send|||||24|
+21|[Pause]||1|200|Sleep|||||25|
+22|LAlt Up|{LAlt Up}|1|0|Send|||||26|
+23|[End If]|EndIf|1|0|If_Statement|||||27|
+24|[Pause]||1|2000|Sleep|||||28|
+25|Evaluate Expression|1=1|1|0|If_Statement|||||29|
+26|LControl Down|{LControl Down}|1|0|Send|||||31|
+27|[Pause]||1|200|Sleep|||||32|
+28|v|{v}|1|0|Send|||||33|
+29|[Pause]||1|200|Sleep|||||34|
+30|LControl Up|{LControl Up}|1|0|Send|||||35|
+31|[End If]|EndIf|1|0|If_Statement|||||36|
+32|[Pause]||1|1000|Sleep|||||37|
+33|Evaluate Expression|0=%skipCopyName%|1|0|If_Statement|||||38|
+34|Evaluate Expression|1=1|1|0|If_Statement|||||40|
+35|LAlt Down|{LAlt Down}|1|0|Send|||||42|
+36|[Pause]||1|200|Sleep|||||43|
+37|Tab|{Tab}|1|0|Send|||||44|
+38|[Pause]||1|200|Sleep|||||45|
+39|LAlt Up|{LAlt Up}|1|0|Send|||||46|
+40|[End If]|EndIf|1|0|If_Statement|||||47|
+41|[Pause]||1|2000|Sleep|||||48|
+42|Evaluate Expression|1=1|1|0|If_Statement|||||49|
+43|F2|{F2}|1|0|Send|||||51|
+44|[End If]|EndIf|1|0|If_Statement|||||52|
+45|[Pause]||1|1000|Sleep|||||53|
+46|Evaluate Expression|1=1|1|0|If_Statement|||||54|
+47|LControl Down|{LControl Down}|1|0|Send|||||56|
+48|[Pause]||1|200|Sleep|||||57|
+49|Evaluate Expression|0=%skipCopyFullName%|1|0|If_Statement|||||58|
+50|a|{a}|1|0|Send|||||60|
+51|[End If]|EndIf|1|0|If_Statement|||||61|
+52|[Pause]||1|1000|Sleep|||||62|
+53|c|{c}|1|0|Send|||||63|
+54|[Pause]||1|200|Sleep|||||64|
+55|LControl Up|{LControl Up}|1|0|Send|||||65|
+56|[End If]|EndIf|1|0|If_Statement|||||66|
+57|[Pause]||1|1000|Sleep|||||67|
+58|Evaluate Expression|1=1|1|0|If_Statement|||||68|
+59|LAlt Down|{LAlt Down}|1|0|Send|||||70|
+60|[Pause]||1|200|Sleep|||||71|
+61|Tab|{Tab}|1|0|Send|||||72|
+62|[Pause]||1|200|Sleep|||||73|
+63|LAlt Up|{LAlt Up}|1|0|Send|||||74|
+64|[End If]|EndIf|1|0|If_Statement|||||75|
+65|[Pause]||1|2000|Sleep|||||76|
+66|Evaluate Expression|1=1|1|0|If_Statement|||||77|
+67|LControl Down|{LControl Down}|1|0|Send|||||79|
+68|[Pause]||1|200|Sleep|||||80|
+69|v|{v}|1|0|Send|||||81|
+70|[Pause]||1|200|Sleep|||||82|
+71|LControl Up|{LControl Up}|1|0|Send|||||83|
+72|[End If]|EndIf|1|0|If_Statement|||||84|
+73|[Pause]||1|1000|Sleep|||||85|
+74|[End If]|EndIf|1|0|If_Statement|||||86|
+75|Evaluate Expression|1=1|1|0|If_Statement|||||87|
+76|Enter|{Enter}|1|0|Send|||||89|
+77|[End If]|EndIf|1|0|If_Statement|||||90|
+78|[Pause]||1|1000|Sleep|||||91|
+79|Evaluate Expression|1=1|1|0|If_Statement|||||92|
+80|LAlt Down|{LAlt Down}|1|0|Send|||||94|
+81|[Pause]||1|200|Sleep|||||95|
+82|Tab|{Tab}|1|0|Send|||||96|
+83|[Pause]||1|200|Sleep|||||97|
+84|LAlt Up|{LAlt Up}|1|0|Send|||||98|
+85|[End If]|EndIf|1|0|If_Statement|||||99|
+86|[Pause]||1|2000|Sleep|||||100|
+87|Evaluate Expression|1=1|1|0|If_Statement|||||101|
+88|Down|{Down}|1|0|Send|||||103|
+89|[End If]|EndIf|1|0|If_Statement|||||104|
+90|[Pause]||1|1000|Sleep|||||105|
+91|[LoopEnd]|LoopEnd|1|0|Loop|||||106|
 
