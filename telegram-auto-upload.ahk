@@ -1,7 +1,7 @@
 ﻿F3::
 {
 
-    skipCopyEnter := InputBox("skipCopyEnter", "is skip copy and skip enter", "", 0).value
+    skipCopyEnter := InputBox("skipCopyEnter", "is skip copy name and skip enter", "", 0).value
     skipCopyName := InputBox("skipCopyName", "is skip copy name", "", 0).value
     skipCopyFullName := InputBox("skipCopyFullName", "is skip copy full name", "", 1).value
     loopNum := InputBox("loopNum", "loop number", "", 0).value
