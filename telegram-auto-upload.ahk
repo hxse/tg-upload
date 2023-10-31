@@ -1,135 +1,88 @@
-﻿; This script was created using Pulover's Macro Creator
-; www.macrocreator.com
+﻿F3::
+{
 
-#NoEnv
-SetWorkingDir %A_ScriptDir%
-CoordMode, Mouse, Window
-SendMode Input
-#SingleInstance Force
-SetTitleMatchMode 2
-#WinActivateForce
-SetControlDelay 1
-SetWinDelay 0
-SetKeyDelay -1
-SetMouseDelay -1
-SetBatchLines -1
+    skipCopyEnter := InputBox("skipCopyEnter", "is skip copy and enter", "", 0).value
+    skipCopyName := InputBox("skipCopyName", "is skip copy name", "", 0).value
+    skipCopyFullName := InputBox("skipCopyFullName", "is skip copy full name", "", 1).value
+    loopNum := InputBox("loopNum", "loop number", "", 0).value
 
-
-F3::
-Macro1:
-    InputBox, skipCopy, skipCopy, , , , , , , , , 0
-    InputBox, skipCopyName, skipCopyName, , , , , , , , , 0
-    InputBox, skipCopyFullName, skipCopyFullName, , , , , , , , , 1
-    InputBox, loopNum, loopNum, , , , , , , , , 0
-    If (%loopNum% = 0)
+    If (loopNum = 0)
     {
         Return
     }
-    Sleep, 5000
-    Loop, %loopNum%
+
+    Sleep 3000
+
+    Loop loopNum
     {
-        If (1 = 1)
+        Send "{Ctrl down}"
+        Send "{c}"
+        Send "{Ctrl up}"
+        Sleep 200
+
+        Send "{ALT down}"
+        Send "{TAB}"
+        Send "{ALT up}"
+        Sleep 200
+
+        Send "{Ctrl down}"
+        Send "{v}"
+        Send "{Ctrl up}"
+        Sleep 200
+
+
+        If (skipCopyEnter = 0)
         {
-            Send, { LControl Down }
-            Sleep, 200
-            Send, { c }
-            Sleep, 200
-            Send, { LControl Up }
-        }
-        Sleep, 1000
-        If (1 = 1)
-        {
-            Send, { LAlt Down }
-            Sleep, 200
-            Send, { Tab }
-            Sleep, 200
-            Send, { LAlt Up }
-        }
-        Sleep, 2000
-        If (1 = 1)
-        {
-            Send, { LControl Down }
-            Sleep, 200
-            Send, { v }
-            Sleep, 200
-            Send, { LControl Up }
-        }
-        Sleep, 1000
-        If (0 = %skipCopy%)
-        {
-            If (0 = %skipCopyName%)
+            If (skipCopyName = 0)
             {
-                If (1 = 1)
+                Send "{ALT down}"
+                Send "{TAB}"
+                Send "{ALT up}"
+                Sleep 200
+
+                Send "{F2}"
+                Sleep 200
+
+
+                Send "{Ctrl down}"
+                If (skipCopyFullName = 0)
                 {
-                    Send, { LAlt Down }
-                    Sleep, 200
-                    Send, { Tab }
-                    Sleep, 200
-                    Send, { LAlt Up }
+                    Send "{a}"
+                    Sleep 200
                 }
-                Sleep, 2000
-                If (1 = 1)
-                {
-                    Send, { F2 }
-                }
-                Sleep, 1000
-                If (1 = 1)
-                {
-                    Send, { LControl Down }
-                    Sleep, 200
-                    If (0 = %skipCopyFullName%)
-                    {
-                        Send, { a }
-                    }
-                    Sleep, 1000
-                    Send, { c }
-                    Sleep, 200
-                    Send, { LControl Up }
-                }
-                Sleep, 1000
-                If (1 = 1)
-                {
-                    Send, { LAlt Down }
-                    Sleep, 200
-                    Send, { Tab }
-                    Sleep, 200
-                    Send, { LAlt Up }
-                }
-                Sleep, 2000
-                If (1 = 1)
-                {
-                    Send, { LControl Down }
-                    Sleep, 200
-                    Send, { v }
-                    Sleep, 200
-                    Send, { LControl Up }
-                }
-                Sleep, 1000
+                Send "{c}"
+                Send "{Ctrl up}"
+                Sleep 200
             }
-            If (1 = 1)
-            {
-                Send, { Enter }
-            }
-            Sleep, 1000
+
+            Send "{ALT down}"
+            Send "{TAB}"
+            Send "{ALT up}"
+            Sleep 200
+
+            Send "{Ctrl down}"
+            Send "{v}"
+            Send "{Ctrl up}"
+            Sleep 200
+
+            Send "{Enter}"
+            Sleep 200
         }
-        If (1 = 1)
-        {
-            Send, { LAlt Down }
-            Sleep, 200
-            Send, { Tab }
-            Sleep, 200
-            Send, { LAlt Up }
-        }
-        Sleep, 2000
-        If (1 = 1)
-        {
-            Send, { Down }
-        }
-        Sleep, 1000
+
+        Send "{ALT down}"
+        Send "{TAB}"
+        Send "{ALT up}"
+        Sleep 200
+
+        Send "{Down}"
+        Sleep 200
+
+
     }
-    Return
+
+}
 
 
-    F8:: ExitApp
+F8:: ExitApp
 
-    F12::Pause
+F12::Pause
