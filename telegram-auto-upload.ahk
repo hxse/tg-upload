@@ -17,6 +17,7 @@ SetBatchLines -1
 
 F3::
 Macro1:
+    InputBox, skipCopy, skipCopy, , , , , , , , , 0
     InputBox, skipCopyName, skipCopyName, , , , , , , , , 0
     InputBox, skipCopyFullName, skipCopyFullName, , , , , , , , , 1
     InputBox, loopNum, loopNum, , , , , , , , , 0
@@ -54,60 +55,63 @@ Macro1:
             Send, { LControl Up }
         }
         Sleep, 1000
-        If (0 = %skipCopyName%)
+        If (0 = %skipCopy%)
         {
-            If (1 = 1)
+            If (0 = %skipCopyName%)
             {
-                Send, { LAlt Down }
-                Sleep, 200
-                Send, { Tab }
-                Sleep, 200
-                Send, { LAlt Up }
-            }
-            Sleep, 2000
-            If (1 = 1)
-            {
-                Send, { F2 }
-            }
-            Sleep, 1000
-            If (1 = 1)
-            {
-                Send, { LControl Down }
-                Sleep, 200
-                If (0 = %skipCopyFullName%)
+                If (1 = 1)
                 {
-                    Send, { a }
+                    Send, { LAlt Down }
+                    Sleep, 200
+                    Send, { Tab }
+                    Sleep, 200
+                    Send, { LAlt Up }
+                }
+                Sleep, 2000
+                If (1 = 1)
+                {
+                    Send, { F2 }
                 }
                 Sleep, 1000
-                Send, { c }
-                Sleep, 200
-                Send, { LControl Up }
+                If (1 = 1)
+                {
+                    Send, { LControl Down }
+                    Sleep, 200
+                    If (0 = %skipCopyFullName%)
+                    {
+                        Send, { a }
+                    }
+                    Sleep, 1000
+                    Send, { c }
+                    Sleep, 200
+                    Send, { LControl Up }
+                }
+                Sleep, 1000
+                If (1 = 1)
+                {
+                    Send, { LAlt Down }
+                    Sleep, 200
+                    Send, { Tab }
+                    Sleep, 200
+                    Send, { LAlt Up }
+                }
+                Sleep, 2000
+                If (1 = 1)
+                {
+                    Send, { LControl Down }
+                    Sleep, 200
+                    Send, { v }
+                    Sleep, 200
+                    Send, { LControl Up }
+                }
+                Sleep, 1000
             }
-            Sleep, 1000
             If (1 = 1)
             {
-                Send, { LAlt Down }
-                Sleep, 200
-                Send, { Tab }
-                Sleep, 200
-                Send, { LAlt Up }
-            }
-            Sleep, 2000
-            If (1 = 1)
-            {
-                Send, { LControl Down }
-                Sleep, 200
-                Send, { v }
-                Sleep, 200
-                Send, { LControl Up }
+                Send, { Enter }
             }
             Sleep, 1000
         }
-        If (1 = 1)
-        {
-            Send, { Enter }
-        }
-        Sleep, 1000
         If (1 = 1)
         {
             Send, { LAlt Down }
